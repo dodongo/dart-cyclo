@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "dart-cyclo.helloWorld",
-        "title": "Hello World"
+        "command": "dart-cyclo.calcCycloForCurrFile",
+        "title": "Calculate Cyclomatic Complexity for Current File"
       }
     ]
   },
