@@ -1,40 +1,35 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-	// console.log('Congratulations, your extension "dart-cyclo" is now active!');
-	console.log('hi');
+	console.log('Congratulations, your extension "dart-cyclo" is now active!');
 
-	// var currentlyOpenTabfilePath = vscode.window.activeTextEditor?.document.fileName;
-	// console.log(currentlyOpenTabfilePath);
-	// if (currentlyOpenTabfilePath !== undefined) {
-	// 	console.log(currentlyOpenTabfilePath);
-	// }
+	var path = vscode.window.activeTextEditor?.document.fileName;
+	// let isDartFile = currentlyOpenTabfilePath?.endsWith('.dart') ?? false;
 
-	// var currentlyOpenTabfileName = path.basename(currentlyOpenTabfilePath);
+	console.log(`Dart file: ${path}`);
 
 	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
 
 	const complexity = "0";
 
 	/**
-	  1. Obtain CFG (Control Flow Graph)
-	  2. Ex:
-				A -> B -> C -> D -> E -> F -> A
-				 ------------------>
-					-------------->
-			------------------------------> G
-	  3.
-	   E = number of edges
+			  1. Obtain CFG (Control Flow Graph)
+			2. Ex:
+						A -> B -> C -> D -> E -> F -> A
+						------------------>
+							-------------->
+					------------------------------> G
+			3.
+				E = number of edges
 
-		V = number of vertices
+				V = number of vertices
 
-		K = number of graph components
+				K = number of graph components
 
-		C = number of conditions/decision points
+				C = number of conditions/decision points
 
-		M (Cyclomatic Complexity) = C + 1
-	 **/
-
+				M (Cyclomatic Complexity) = C + 1
+	**/
 	statusBarItem.text = `Avg. Cyclo: ${complexity}`;
 	statusBarItem.show();
 
@@ -46,6 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	context.subscriptions.push(disposable);
+	// }
 }
 
 export function deactivate() { }
